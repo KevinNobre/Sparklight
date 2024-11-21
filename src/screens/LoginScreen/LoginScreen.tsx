@@ -1,21 +1,17 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  StyleSheet,
-  Image,
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../navigation/type';
 
 const LoginScreen = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>Sparklight</Text>
         <TouchableOpacity style={styles.registerButton}>
-          <Text style={styles.registerText}>Registrar-se</Text>
+          <Text style={styles.registerText} onPress={() => navigation.navigate('Registro')}>Registrar-se</Text>
         </TouchableOpacity>
       </View>
 
@@ -41,13 +37,13 @@ const LoginScreen = () => {
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
       </View>
-      </View>
 
-//
-      //{/* Imagem inferior */}
-     // <View style={styles.footer}>
-      //<Image source={require('../../assets/woman.png')} height={'110px'} width={'120px'} marginBottom={'0.6rem'} />
-      //</View>
+
+      {/* Imagem inferior */}
+    <View style={styles.footer}>
+      <Image source={require('../../assets/woman.png')}  />
+    </View>
+    </View>
 
   );
 };
@@ -76,11 +72,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   registerText: {
-    color: '#000000',
+    color: '#0F4C4A',
     fontWeight: '600',
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 28,
     color: '#FBC02D',
     marginTop: 50,
     textAlign: 'center',
@@ -110,6 +106,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   footer: {
+
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
