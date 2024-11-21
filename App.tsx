@@ -1,20 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// Importa o provedor do NativeBase
+import { NativeBaseProvider } from "native-base";
+// Importa o componente de navegação
+import AppNavigator from "./src/navigation/AppNavigator";
 
 export default function App() {
+  // Retorna a estrutura da tela principal
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    // Envolve a aplicação no provedor de estado global e NativeBase
+    <NativeBaseProvider>
+        <AppNavigator /> {/* Adicione o navegador aqui */}
+    </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
