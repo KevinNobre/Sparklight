@@ -18,7 +18,7 @@ const NavBar: React.FC = () => {
       <TouchableOpacity onPress={() => navigation.navigate("Dicas")} style={styles.navItem}>
         <Text style={styles.navText}>Dicas</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("Sair")} style={styles.navItem}>
+      <TouchableOpacity onPress={() => navigation.navigate("Login")} style={styles.navItem}>
         <Text style={styles.navText}>Sair</Text>
       </TouchableOpacity>
     </View>
