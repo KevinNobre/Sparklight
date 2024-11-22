@@ -3,6 +3,7 @@ import { NativeBaseProvider } from "native-base";
 // Importa o componente de navegação
 import AppNavigator from "./src/navigation/AppNavigator";
 
+
 export default function App() {
   // Retorna a estrutura da tela principal
   return (

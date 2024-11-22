@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/type';
 
-const LoginScreen = () => {
+const LoginScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const [email, setEmail] = useState<string>('');
+  const [senha, setSenha] = useState<string>('');
+
+
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -33,8 +37,8 @@ const LoginScreen = () => {
           placeholderTextColor="#ccc"
           secureTextEntry
         />
-        <TouchableOpacity style={styles.loginButton}>
-          <Text style={styles.loginButtonText}>Login</Text>
+        <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Home')}>
+          <Text style={styles.loginButtonText} >Login</Text>
         </TouchableOpacity>
       </View>
 
