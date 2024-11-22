@@ -69,6 +69,5 @@ Atualize a string de conexão no arquivo appsettings.json para o seu banco de da
 ## Como Rodar o Projeto
 --1. **Inicie Clonando o repositório, abra a pasta do projeto com sua IDE e utilize o comando abaixo**: 
    ```bash
-   git clone https://github.com/KevinNobre/Sparklight.git
 
   npm install
