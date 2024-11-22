@@ -56,9 +56,13 @@ API de Energia Local: Obter dados de concessionárias de energia para fornecer i
 
 ## Tecnologias Utilizadas
 React Native: Framework principal para desenvolvimento mobile cross-platform.
+
 Expo: Ferramenta para simplificar o desenvolvimento, build e deploy de aplicações React Native.
+
 TypeScript: Linguagem para desenvolvimento tipado, proporcionando maior segurança no código.
+
 React Navigation: Biblioteca para navegação entre telas.
+
 Axios: Para chamadas à API.
 
 ## Configuração do Banco de Dados:
