@@ -30,7 +30,7 @@ export const cadastrarUsuario = async (usuarioData: {
     if (error instanceof Error) {
       throw new Error(error.message || 'Erro desconhecido.');
     } else {
-      throw new Error('Erro ao tentar realizar o cadastro.');
+      throw new Error('Erro ao tentar realizar o cadastro do usuário.');
     }
   }
 };
