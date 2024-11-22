@@ -2,12 +2,29 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/type';
+import { loginUser } from '../../services/LoginUserService';
 
 const LoginScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [email, setEmail] = useState<string>('');
   const [senha, setSenha] = useState<string>('');
+  const [error, setError] = useState<string | null>(null); 
 
+  
+  const handleLogin = async () => {
+    setError(null); 
+
+    try {
+      const usuario = await loginUser(email, senha); 
+      navigation.navigate('Home'); 
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message); 
+      } else {
+        setError('Erro desconhecido.');
+      }
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -30,25 +47,28 @@ const LoginScreen: React.FC = () => {
           style={styles.input}
           placeholder="Email"
           placeholderTextColor="#ccc"
+          value={email}
+          onChangeText={setEmail}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
           placeholderTextColor="#ccc"
           secureTextEntry
+          value={senha}
+          onChangeText={setSenha}
         />
-        <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Home')}>
-          <Text style={styles.loginButtonText} >Login</Text>
+        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+          <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
+        {error && <Text style={styles.errorText}>{error}</Text>} 
       </View>
 
-
       {/* Imagem inferior */}
-    <View style={styles.footer}>
-      <Image source={require('../../assets/woman.png')}  />
+      <View style={styles.footer}>
+        <Image source={require('../../assets/woman.png')} />
+      </View>
     </View>
-    </View>
-
   );
 };
 
@@ -109,6 +129,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
+  errorText: {
+    color: 'red',
+    textAlign: 'center',
+    marginTop: 10,
+  },
   footer: {
 
     flex: 1,
@@ -123,3 +148,4 @@ const styles = StyleSheet.create({
 });
 
 export default LoginScreen;
+

@@ -10,7 +10,14 @@ const RegistroScreen: React.FC = () => {
       {/* Título e Ícone */}
       <View style={styles.header}>
         <Text style={styles.title}>Sparklight</Text>
-        <Image source={require('../../assets/spark.png')} height={'110px'} width={'120px'} marginBottom={'0.6rem'} />
+        <Image
+          source={require('../../assets/spark.png')}
+          style={{
+            height: 110, 
+            width: 120, 
+            marginBottom: 6, 
+          }}
+        />
         <Text style={styles.subtitle}>Registro</Text>
         <Text style={styles.description}>Preencha com suas informações</Text>
       </View>
