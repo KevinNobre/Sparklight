@@ -5,6 +5,9 @@ import { RootStackParamList } from '../../navigation/type';
 import NavBar from '../../components/NavBar';
 
 const DicasScreen: React.FC = () => {
+  const [totalSaved, setTotalSaved] = useState(72.59);
+  const [todayKwh, setTodayKwh] = useState(1826);
+  const [totalKwh, setTotalKwh] = useState(1115);
 
 
   return (
