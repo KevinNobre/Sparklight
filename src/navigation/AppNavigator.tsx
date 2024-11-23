@@ -5,6 +5,7 @@ import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import RegistroScreen from '../screens/RegistroScreen/RegistroScreen';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import DicasScreen from '../screens/DicasScreen/DicasScreen';
+import ConsumoScreen from '../screens/ConsumoScreen/ConsumoScreen';
 import { RootStackParamList } from '../navigation/type';
 
 
@@ -17,7 +18,8 @@ const AppNavigator: React.FC = () => {
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Registro" component={RegistroScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Dicas" component={DicasScreen} options={{ headerShown: false }} />  
+        <Stack.Screen name="Dicas" component={DicasScreen} options={{ headerShown: false }} /> 
+        <Stack.Screen name="Consumo" component={ConsumoScreen} options={{ headerShown: false }} />   
 
       </Stack.Navigator>
     </NavigationContainer>
