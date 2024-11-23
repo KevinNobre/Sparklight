@@ -45,7 +45,7 @@ const RegistroScreen: React.FC = () => {
       const usuario = await cadastrarUsuario(usuarioData);
 
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
-      navigation.navigate('Login'); 
+      navigation.navigate('Home'); 
     } catch (error: any) {
 
       Alert.alert('Erro', error.message || 'Erro ao tentar cadastrar.');
