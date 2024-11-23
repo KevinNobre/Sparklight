@@ -16,6 +16,8 @@ FIGMA: https://www.figma.com/design/11IKYwbitcAj2TQNXp6fQv/Sparklight?node-id=0-
 
 Vídeo Pitch: https://youtu.be/0dKvL1Tfhl8
 
+Demonstração em vídeo: https://youtu.be/FySZrribu4M
+
 ![image](https://github.com/user-attachments/assets/99d38928-aa16-4f84-933e-ff882b8c1aa6)
 
 ### Objetivo do Projeto
