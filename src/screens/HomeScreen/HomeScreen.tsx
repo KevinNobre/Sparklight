@@ -1,14 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/type';
 import NavBar from '../../components/NavBar';
+import { fetchUserData } from "../../services/HistoricoService";
 
 const HomeScreen: React.FC = () => {
+  const [consumoMes, setConsumoMes] = useState<number | null>(null);
+  const [custoMes, setCustoMes] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [totalKwh, setTotalKwh] = useState(1115);
   const [totalSaved, setTotalSaved] = useState(72.59);
   const [todayKwh, setTodayKwh] = useState(1826);
   const [devices, setDevices] = useState(4);
+
+  useEffect(() => {
+    const loadUserData = async () => {
+      try {
+        const data = await fetchUserData(6); // ID do usuário
+        setConsumoMes(data.consumoMes);
+        setCustoMes(data.custoMes);
+      } catch (err) {
+        setError("Erro ao carregar os dados.");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadUserData();
+  }, []);
 
   return (
     
@@ -20,7 +42,7 @@ const HomeScreen: React.FC = () => {
         <Text style={styles.subtitle}>Iluminando o caminho para um consumo consciente</Text>
         <View style={styles.billContainer}>
         <Text style={styles.billText}>Valor atual da sua fatura</Text>
-        <Text style={styles.billValue}>R$ 90,00</Text>
+        <Text style={styles.billValue}>R$ {custoMes} </Text>
         <Text style={styles.billSaved}>
           Você já economizou <Text style={styles.savedHighlight}>R$ {totalSaved.toFixed(2)}</Text>
         </Text>
@@ -30,7 +52,7 @@ const HomeScreen: React.FC = () => {
 
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Total kWh Consumidos</Text>
-        <Text style={styles.cardValue}>{totalKwh}</Text>
+        <Text style={styles.cardValue}>{consumoMes} kWh</Text>
         <Text style={styles.cardSubtitle2}>
           4 aparelhos registrados
         </Text>
@@ -40,7 +62,7 @@ const HomeScreen: React.FC = () => {
         <Text style={styles.cardTitle}>kWh Consumidos Hoje</Text>
         <Text style={styles.cardValue}>{todayKwh}</Text>
         <Text style={styles.cardSubtitle}>
-          187Wh (24,87%)
+        R$ {custoMes?.toFixed(2)}
         </Text>
       </View>
 
