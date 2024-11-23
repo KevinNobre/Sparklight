@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
 import { cadastrarUsuario } from '../../services/CadastrarUsuarioService';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/type';
 
 const RegistroScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  
 
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
@@ -18,7 +19,9 @@ const RegistroScreen: React.FC = () => {
   const [senha, setSenha] = useState('');
   const [loading, setLoading] = useState(false); 
 
+
   const handleCadastro = async () => {
+ 
     if (!nome || !sobrenome || !email || !cep || !cidade || !estado || !genero || !idade || !senha) {
       Alert.alert('Erro', 'Todos os campos são obrigatórios.');
       return;
@@ -40,9 +43,11 @@ const RegistroScreen: React.FC = () => {
 
     try {
       const usuario = await cadastrarUsuario(usuarioData);
+
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
       navigation.navigate('Login'); 
     } catch (error: any) {
+
       Alert.alert('Erro', error.message || 'Erro ao tentar cadastrar.');
     } finally {
       setLoading(false);
@@ -50,11 +55,7 @@ const RegistroScreen: React.FC = () => {
   };
 
   return (
-    <KeyboardAvoidingView
-    style={{ flex: 1 }}
-  >
-    <ScrollView  contentContainerStyle={styles.scrollContainer}
-        keyboardShouldPersistTaps="handled">
+    <View style={styles.container}>
       {/* Título e Ícone */}
       <View style={styles.header}>
         <Text style={styles.title}>Sparklight</Text>
@@ -147,23 +148,16 @@ const RegistroScreen: React.FC = () => {
           <Text style={styles.registerButtonText}>{loading ? 'Cadastrando...' : 'Registrar'}</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
+    flex: 1,
     backgroundColor: '#0F4C4A',
     paddingHorizontal: 20,
     paddingTop: 50,
-  },
-  scrollContainer: {
-    paddingHorizontal: 20,
-    paddingTop: 50,
-    flexGrow: 1,  
-    justifyContent: 'flex-start', 
   },
   header: {
     alignItems: 'center',
@@ -173,6 +167,11 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: '#FBC02D',
+  },
+  logo: {
+    width: 60,
+    height: 60,
+    marginVertical: 10,
   },
   subtitle: {
     fontSize: 22,
